@@ -2306,8 +2306,7 @@ in which C preprocessor directives are used. e.g. `asm-mode' and
        ;; Exit/Feature symbols as constants.
        (,(concat "(\\(catch\\|throw\\|featurep\\|provide\\|require\\)\\>"
 		 "[ \t']*\\(\\sw+\\)?")
-	(1 font-lock-keyword-face)
-	(2 font-lock-constant-face nil t))
+	(1 font-lock-keyword-face))
        ;; Erroneous structures.
        ("(\\(abort\\|assert\\|warn\\|check-type\\|cerror\\|error\\|signal\\)\\>" 1 font-lock-warning-face)
        ;; Words inside \\[] tend to be for `substitute-command-keys'.
