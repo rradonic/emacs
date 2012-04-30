@@ -304,9 +304,7 @@ Match group 1 is the name of the macro.")
 
 (defconst js--font-lock-keywords-1
   (list
-   "\\_<import\\_>"
-   (list js--function-heading-1-re 1 font-lock-function-name-face)
-   (list js--function-heading-2-re 1 font-lock-function-name-face))
+   "\\_<import\\_>")
   "Level one font lock keywords for `js-mode'.")
 
 (defconst js--font-lock-keywords-2
@@ -315,8 +313,8 @@ Match group 1 is the name of the macro.")
                 (list "\\_<for\\_>"
                       "\\s-+\\(each\\)\\_>" nil nil
                       (list 1 'font-lock-keyword-face))
-                (cons js--basic-type-re font-lock-type-face)
-                (cons js--constant-re font-lock-constant-face)))
+                (cons js--basic-type-re font-lock-keyword-face)
+                (cons js--constant-re font-lock-keyword-face)))
   "Level two font lock keywords for `js-mode'.")
 
 ;; js--pitem is the basic building block of the lexical
