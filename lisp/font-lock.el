@@ -2213,24 +2213,6 @@ Used in `cpp-font-lock-keywords'.")
      '("^#[ \t]*\\(?:import\\|include\\)[ \t]*\\(<[^>\"\n]*>?\\)"
        1 font-lock-string-face prepend)
      ;;
-     ;; Fontify function macro names.
-     '("^#[ \t]*define[ \t]+\\([[:alpha:]_][[:alnum:]_$]*\\)("
-       (1 font-lock-function-name-face prepend)
-       ;;
-       ;; Macro arguments.
-       ((lambda (limit)
-	  (re-search-forward
-	   "\\(?:\\([[:alpha:]_][[:alnum:]_]*\\)[,]?\\)"
-	   (or (save-excursion (re-search-forward ")" limit t))
-	       limit)
-	   t))
-	nil nil (1 font-lock-variable-name-face prepend)))
-     ;;
-     ;; Fontify symbol names in #elif or #if ... defined preprocessor directives.
-     '("^#[ \t]*\\(?:elif\\|if\\)\\>"
-       ("\\<\\(defined\\)\\>[ \t]*(?\\([[:alpha:]_][[:alnum:]_]*\\)?" nil nil
-	(1 font-lock-builtin-face prepend) (2 font-lock-variable-name-face prepend t)))
-     ;;
      ;; Fontify otherwise as symbol names, and the preprocessor directive names.
      (list
       (concat "^\\(#[ \t]*\\(?:" directives
@@ -2266,11 +2248,7 @@ in which C preprocessor directives are used. e.g. `asm-mode' and
 		;; Any whitespace and defined object.
 		"[ \t'\(]*"
 		"\\(setf[ \t]+\\sw+\\|\\sw+\\)?")
-       (1 font-lock-keyword-face)
-       (9 (cond ((match-beginning 3) font-lock-function-name-face)
-		((match-beginning 6) font-lock-variable-name-face)
-		(t font-lock-type-face))
-	  nil t))
+       (1 font-lock-keyword-face))
       ;; Emacs Lisp autoload cookies.  Supports the slightly different
       ;; forms used by mh-e, calendar, etc.
       ("^;;;###\\([-a-z]*autoload\\)" 1 font-lock-warning-face prepend)
