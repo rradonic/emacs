@@ -1418,9 +1418,6 @@ See `font-lock-syntax-table'.")
 
 (defconst ruby-font-lock-keywords
   (list
-   ;; functions
-   '("^\\s *def\\s +\\([^( \t\n]+\\)"
-     1 font-lock-function-name-face)
    ;; keywords
    (cons (concat
           "\\(^\\|[^_:.@$]\\|\\.\\.\\)\\b\\(defined\\?\\|"
@@ -1471,28 +1468,10 @@ See `font-lock-syntax-table'.")
          2)
    ;; here-doc beginnings
    (list ruby-here-doc-beg-re 0 'font-lock-string-face)
-   ;; variables
-   '("\\(^\\|[^_:.@$]\\|\\.\\.\\)\\b\\(nil\\|self\\|true\\|false\\)\\>"
-     2 font-lock-variable-name-face)
-   ;; variables
-   '("\\(\\$\\([^a-zA-Z0-9 \n]\\|[0-9]\\)\\)\\W"
-     1 font-lock-variable-name-face)
-   '("\\(\\$\\|@\\|@@\\)\\(\\w\\|_\\)+"
-     0 font-lock-variable-name-face)
-   ;; constants
-   '("\\(^\\|[^_]\\)\\b\\([A-Z]+\\(\\w\\|_\\)*\\)"
-     2 font-lock-type-face)
    ;; symbols
    '("\\(^\\|[^:]\\)\\(:\\([-+~]@?\\|[/%&|^`]\\|\\*\\*?\\|<\\(<\\|=>?\\)?\\|>[>=]?\\|===?\\|=~\\|![~=]?\\|\\[\\]=?\\|\\(\\w\\|_\\)+\\([!?=]\\|\\b_*\\)\\|#{[^}\n\\\\]*\\(\\\\.[^}\n\\\\]*\\)*}\\)\\)"
      2 font-lock-reference-face)
-   '("\\(^\\s *\\|[\[\{\(,]\\s *\\|\\sw\\s +\\)\\(\\(\\sw\\|_\\)+\\):[^:]" 2 font-lock-reference-face)
-   ;; expression expansion
-   '("#\\({[^}\n\\\\]*\\(\\\\.[^}\n\\\\]*\\)*}\\|\\(\\$\\|@\\|@@\\)\\(\\w\\|_\\)+\\)"
-     0 font-lock-variable-name-face t)
-   ;; warn lower camel case
-                                        ;'("\\<[a-z]+[a-z0-9]*[A-Z][A-Za-z0-9]*\\([!?]?\\|\\>\\)"
-                                        ;  0 font-lock-warning-face)
-   )
+   '("\\(^\\s *\\|[\[\{\(,]\\s *\\|\\sw\\s +\\)\\(\\(\\sw\\|_\\)+\\):[^:]" 2 font-lock-reference-face))
   "Additional expressions to highlight in Ruby mode.")
 
 ;;;###autoload
